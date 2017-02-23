@@ -3,6 +3,8 @@
 # this information is taken from the docker site
 # use to install on ubuntu 16.04 ONLY
 # $1 is the remote server you wish to install docker on
+# this can be a virtual machine on AWS or on a local setup
+# be sure to set up openssh on the virtual machine
 
 ssh $1 "sudo apt-get install -y --no-install-recommends \
     apt-transport-https \
@@ -16,10 +18,10 @@ ssh $1 "sudo curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -"
 
 # add repository for docker
 
-# ssh $1 "sudo add-apt-repository \
-#       "deb https://apt.dockerproject.org/repo/ \
-#       ubuntu-$(lsb_release -cs) \
-#       main"""
+ssh $1 'sudo add-apt-repository \
+       "deb https://apt.dockerproject.org/repo/ \
+       ubuntu-$(lsb_release -cs) \
+       main"'
 
 # Update the apt package index.
 
